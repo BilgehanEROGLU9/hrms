@@ -2,12 +2,13 @@ package hrmsJava.hrms.business.constants;
 
 public class Messages {
 	public static String savingSuccess = "Kayıt Başarılı.";
+	public static String listingSuccess = "Listeleme Başarılı.";
 	public static String emailExists = "Bu E-Posta adresine sahip bir hesap zaten mecut.";
 	public static String emailAndIdentityExists = "Bu E-Posta adresine ve Kimlik numarasına sahip bir hesap zaten mecut.";
 	public static String nationalIdentityExists = "Bu Kimlik numarasına sahip bir hesap zaten mecut.";
 	public static String checkForm = "Bilgiler boş geçilemez.";
 	public static String wrongInfos = "Bilgiler doğru değil.";
-	
+	public static String change="Değiştirme işlemi başarılı.";
 	public static String invalidEmail = "Hatalı Email bilgisi.";
 	public static String invalidPassword = "Hatalı Şifre bilgisi.";
 	public static String invalidPasswordRepeat = "Şifre tekrarı, şifre ile uyuşmuyor.";
