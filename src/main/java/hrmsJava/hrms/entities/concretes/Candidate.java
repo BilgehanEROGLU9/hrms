@@ -1,22 +1,28 @@
 package hrmsJava.hrms.entities.concretes;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-@EqualsAndHashCode(callSuper=false)
+
 @Data
+@EqualsAndHashCode(callSuper=false)
 @Entity
 @Table(name = "candidates")
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@PrimaryKeyJoinColumn(name = "id")
 public class Candidate extends User{
 	
 	@Column(name = "first_name")
@@ -27,7 +33,33 @@ public class Candidate extends User{
 	private String nationalIdentity;
 	@Column(name = "birthdate")
 	private Date birthdate;
+	@Column(name = "image_url")
+	private String imageUrl;
+	@Column(name = "is_activated")
+	private boolean isActivated;
+	@Column(name = "description")
+	private String description;
+	
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "candidate")
+	private List<CandidateLink> candidateLinks;
+	
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "candidate")
+	private List<CandidateExperience> candidateExperiences;
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "candidate")
+	private List<CandidateLanguage> candidateLanguages;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "candidate")
+	private List<CandidateEducation> candidateEducations;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "candidate")
+	private List<CandidateSkill> candidateSkills;
 
 }
