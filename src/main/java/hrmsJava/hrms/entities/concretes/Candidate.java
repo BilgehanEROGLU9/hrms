@@ -10,6 +10,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,6 +24,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @PrimaryKeyJoinColumn(name = "id")
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler","candidate"})
 public class Candidate extends User{
 	
 	@Column(name = "first_name")
@@ -41,25 +43,6 @@ public class Candidate extends User{
 	private String description;
 	
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "candidate")
-	private List<CandidateLink> candidateLinks;
-	
-	
-	@JsonIgnore
-	@OneToMany(mappedBy = "candidate")
-	private List<CandidateExperience> candidateExperiences;
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "candidate")
-	private List<CandidateLanguage> candidateLanguages;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy = "candidate")
-	private List<CandidateEducation> candidateEducations;
-
-	@JsonIgnore
-	@OneToMany(mappedBy = "candidate")
-	private List<CandidateSkill> candidateSkills;
 
 }
